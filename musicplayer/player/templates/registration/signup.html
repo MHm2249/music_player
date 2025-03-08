@@ -1,0 +1,9 @@
+<h2 class="text-center mt-4">Sign Up</h2>
+<div class="d-flex justify-content-center">
+    <form method="post" class="bg-secondary p-4 rounded shadow w-50">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success w-100">Sign Up</button>
+    </form>
+</div>
+<p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}" class="text-info">Login</a></p>

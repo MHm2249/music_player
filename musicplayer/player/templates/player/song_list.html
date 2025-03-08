@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center p-6">
+    <h1 class="text-4xl font-bold mb-6">Music Player</h1>
+    
+    <form method="get" action="{% url 'song_list' %}" class="w-full max-w-md flex mb-6">
+        <input type="text" name="q" placeholder="Search songs..." class="flex-1 p-2 rounded-l-lg text-black">
+        <button type="submit" class="bg-blue-500 px-4 py-2 rounded-r-lg hover:bg-blue-600">Search</button>
+    </form>
+    
+    <ul class="w-full max-w-md space-y-6">
+        {% for song in songs %}
+            <li class="bg-gray-800 p-4 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold">{{ song.title }}</h2>
+                <p class="text-gray-400">{{ song.artist }}</p>
+                <audio controls class="w-full mt-3">
+                    <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
